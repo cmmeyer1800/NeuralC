@@ -1,13 +1,18 @@
-CC=gcc
-dev_flags = -Wall -Wextra -Og
-prod_flags = -O3
-std = -std=c11
+CC=g++
+STD = -std=c++11
+CFLAGS = -O3
+SOURCES = matrices.cpp neural.cpp
+OBJECTS=$(SOURCES: .cpp=.o)
+EXECUTABLE = net
 
-net: net.c net.h
-	$(CC) $(std) $(prod_flags) -o net net.c net.h
+all: $(SOURCES) $(EXECUTABLE)
+
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm net
-
-test:
-	$(CC) $(std) $(dev_flags) -o net net.c net.h
+	rm *.o $(EXECUTABLE)
