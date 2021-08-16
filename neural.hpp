@@ -3,8 +3,6 @@
 
 #include "matrices.hpp"
 
-int main();
-
 class Dense_Layer{
     Matrix *weights;
     Matrix *biases;

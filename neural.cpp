@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string>
-#include <math.h>
 #include "neural.hpp"
 #include "matrices.hpp"
 

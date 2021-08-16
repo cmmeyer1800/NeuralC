@@ -11,6 +11,6 @@ them is in matrices.cpp. This was originally written in c and moved to cpp for m
 All Matrices are manipulated through pointers to these structs created in these ways:
 ```
 Matrix * mat; for uninitiated
-Matrix * mat = new_mat(dim0, dim1); for initiated with given size
+Matrix * mat = new_matrix(dim0, dim1); for initiated with given size
 Matrix * mat = rand_mat(dim0, dim1); for initiated to value [0,1] with given size
 ```

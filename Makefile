@@ -7,7 +7,6 @@ EXECUTABLE = net
 
 all: $(SOURCES) $(EXECUTABLE)
 
-
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $@
 
