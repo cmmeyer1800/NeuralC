@@ -169,6 +169,23 @@ Matrix * add_mats(Matrix * mat1, Matrix * mat2){
 	}
 	return nullptr;
 }
+// returns larger of two, either threshold or the matrix value
+Matrix * mat_max(Matrix * mat, float thresh){
+	int m = mat->m;
+	int n = mat->n;
+	Matrix * ret_mat = new_matrix(m, n);
+	for(int i = 0; i < m; i++){
+		for(int j = 0; j < n; j++){
+			if(mat->array[i][j] > thresh){
+				ret_mat->array[i][j] = mat->array[i][j];
+			}
+			else{
+				ret_mat->array[i][j] = thresh;
+			}
+		}
+	}
+	return ret_mat;
+}
 
 void init_mat_gen(){
 	srand(time(NULL));

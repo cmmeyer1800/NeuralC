@@ -1,11 +1,12 @@
 #include <iostream>
 #include <string>
+#include <math.h>
 #include "neural.hpp"
 #include "matrices.hpp"
 
-Dense_Layer::Dense_Layer(int n_inputs){
-    weights = rand_mat(n_inputs, 1);
-    biases = set_mat(new_matrix(n_inputs, 1), 0.0);
+Dense_Layer::Dense_Layer(int n_inputs, int n_neurons){
+    weights = rand_mat(n_inputs, n_neurons);
+    biases = set_mat(new_matrix(1, n_neurons), 0.0);
 }
 
 Dense_Layer::Dense_Layer(Matrix *weights, Matrix *biases){
@@ -15,17 +16,25 @@ Dense_Layer::Dense_Layer(Matrix *weights, Matrix *biases){
 
 void Dense_Layer::forward(Matrix * inputs){
     Matrix *bef_bias = dot(inputs, weights);
-    node_values = add_mats(bef_bias, transpose(biases));
+    output = add_mats(bef_bias, biases);
 }
 
 Matrix * Dense_Layer::get_output(){
-    return node_values;
+    return output;
+}
+
+void ReLU::forward(Matrix * input){
+    output = mat_max(input, 0);
+}
+
+Matrix * ReLU::get_output(){
+    return output;
 }
 
 int main(){
     init_mat_gen();
-    Matrix *inputs = set_mat(new_matrix(1, 2), 5.0);
-    Dense_Layer lay(2);
-    lay.forward(inputs);
-    prnt_mat(lay.get_output());
+    Matrix * mat = rand_mat(1, 4);
+    prnt_mat(mat);
+    Matrix * mat2 = mat_max(mat, .5);
+    prnt_mat(mat2);
 }

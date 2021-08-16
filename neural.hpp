@@ -6,14 +6,20 @@
 int main();
 
 class Dense_Layer{
-    private:
-        Matrix *weights;
-        Matrix *biases;
-        Matrix *node_values;
+    Matrix *weights;
+    Matrix *biases;
+    Matrix *output;
     public:
         Dense_Layer(Matrix *weights, Matrix *biases);
-        Dense_Layer(int n_inputs);
+        Dense_Layer(int n_inputs, int n_neurons);
         void forward(Matrix * inputs);
+        Matrix * get_output();
+};
+
+class ReLU{
+    Matrix * output;
+    public:
+        void forward(Matrix * input);
         Matrix * get_output();
 };
 

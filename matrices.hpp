@@ -27,6 +27,8 @@ Matrix * mat_sum(Matrix *mat, int axis);
 
 Matrix * add_mats(Matrix * mat1, Matrix * mat2);
 
+Matrix * mat_max(Matrix * mat, float thresh);
+
 void init_mat_gen();
 
 #endif
