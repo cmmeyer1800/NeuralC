@@ -33,8 +33,10 @@ Matrix * ReLU::get_output(){
 
 int main(){
     init_mat_gen();
-    Matrix * mat = rand_mat(1, 4);
-    prnt_mat(mat);
-    Matrix * mat2 = mat_max(mat, .5);
-    prnt_mat(mat2);
+    ReLU activate;
+    Dense_Layer layer(5, 5);
+    Matrix * in_mat = rand_mat(1,5);
+    layer.forward(in_mat);
+    activate.forward(layer.get_output());
+    prnt_mat(activate.get_output());
 }
